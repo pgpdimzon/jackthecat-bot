@@ -7,9 +7,17 @@ const FeedbacksSchema = new Schema({
         type: String,
         required: [true, 'no server id'],
     },
+    server_name: {
+        type: String,
+        required: [true, 'no server name'],
+    },
     author_id: {
         type: String,
         required: [true, 'no author'],
+    }, 
+    author_tag: {
+        type: String,
+        required: [true, 'no author tag'],
     },
     body: {
         type: String,

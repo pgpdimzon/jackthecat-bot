@@ -4,7 +4,7 @@ module.exports = {
     async execute(message, args) {
 
         if(!args.length) {
-            return message.reply('randpick where? 😭');
+            return message.reply('randompick where? 😿');
         }
 
         let userList = [];
@@ -22,13 +22,15 @@ module.exports = {
             voiceChannelName = channelArray.join().replace(/,/g, ' ');
         }
 
+        let counter = 0;
         if(isChannelId) {
             message.guild.channels.cache.filter((channel) =>
             channel.id === args[0] && channel.guild.name === message.guild.name &&
             channel.type == 'voice').forEach((voiceChannel) => {
+                counter++;
                 voiceChannelName = voiceChannel.name;
                 voiceChannel.members.forEach((member) => {
-                    userList.push(member.user.username);
+                    userList.push(member.nickname != null ? member.nickname : member.user.username);
                 });
             });
         }
@@ -36,14 +38,16 @@ module.exports = {
             message.guild.channels.cache.filter((channel) =>
             channel.name === voiceChannelName && channel.guild.name === message.guild.name &&
             channel.type == 'voice').forEach((voiceChannel) => {
+                counter++;
                 voiceChannel.members.forEach((member) => {
-                    userList.push(member.user.username);
+                    userList.push(member.nickname != null ? member.nickname : member.user.username);
                 });
             });
         }
 
         const numberToPick = args[args.length - 1];
         if(!isNaN(parseInt(numberToPick)) && parseInt(numberToPick) > 0) {
+            
             if(!(numberToPick > userList.length)) {
                 shuffleArray(userList);
                 const randPickEmbed = { title: `Random Pick from ${voiceChannelName}` };
@@ -57,20 +61,20 @@ module.exports = {
             else {
                 let errorMessage;
 
-                if(typeof voiceChannelName === 'undefined') {
-                    errorMessage = 'no voice channel found 😭';
+                if(counter == 0) {
+                    errorMessage = 'no voice channel found 🙀';
                 }
                 else if(userList.length == 0) {
-                    errorMessage = 'no users found in voice channel 😭';
+                    errorMessage = 'no users found in voice channel 😿';
                 }
                 else {
-                    errorMessage = 'input exceeded number of users in voice channel ';
+                    errorMessage = 'input exceeded number of users in voice channel 😾';
                 }
                 message.reply(errorMessage);
             }
         }
         else {
-            message.channel.send('cannot pick from invalid number of users 😭');
+            message.channel.send('cannot pick from invalid number of users 🙀');
         }
     },
 };

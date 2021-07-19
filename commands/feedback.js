@@ -13,13 +13,15 @@ module.exports = {
 
         const feedbackObj = await Feedback.create({
             server_id : message.guild.id,
+            server_name : message.guild.name,
             author_id : message.author.id,
+            author_tag : message.author.tag,
             body : feedback,
             creation_date : date,
         });
 
         feedbackObj.save();
 
-        message.channel.send('thanks for the feedback!');
+        message.channel.send('thanks for the feedback! 🤍');
     },
 };
