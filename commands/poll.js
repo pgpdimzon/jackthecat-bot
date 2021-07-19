@@ -14,7 +14,7 @@ module.exports = {
 
         if(!isNaN(parseInt(args[0])) && parseInt(args[0]) > 1) {
             if(parseInt(args[0]) > 10) {
-                message.reply('upto 10 options only pls 😭');
+                message.reply('upto 10 options only pls 😸');
                 return;
             }
 
@@ -31,11 +31,11 @@ module.exports = {
         }
         else {
             if(parseInt(args[0]) === 0) {
-                message.reply('you can\'t have 0 options for the poll 😭');
+                message.reply('you can\'t have 0 options for the poll 😿');
                 return;
             }
             else if(parseInt(args[0]) === 1) {
-                message.reply('why bother making a poll with only 1 option? 😭');
+                message.reply('why bother making a poll with only 1 option? 😾');
                 return;
             }
             pollString = args.join().replace(/,/g, ' ');

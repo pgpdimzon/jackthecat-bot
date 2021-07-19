@@ -1,9 +1,9 @@
+const Quote = require('../models/quotes');
+
 module.exports = {
     name: 'wisdom',
     description: 'get a random quote from pool of server quotes',
     async execute(message, args) {
-
-        const Quote = require('../models/quotes');
 
         let idList = [];
 
@@ -26,7 +26,12 @@ module.exports = {
                 return i.id == itemId;
             });
 
-            message.channel.send(quoteObj[0].body + ' - ' + `<@!${quoteObj[0].user_tagged}>` + ', ' + quoteObj[0].creation_year);
+            message.channel.send('Gathering wisdom ').then(async (msg) =>{
+                msg.edit('Gathering wisdom 🐱🍺');
+                msg.edit('Gathering wisdom 🐱🍺🍺');
+                msg.edit('Gathering wisdom 🐱🍺🍺🍺');
+                msg.edit(quoteObj[0].body + ' - ' + `<@!${quoteObj[0].user_tagged}>` + ', ' + quoteObj[0].creation_year);
+            }); 
 
         }
         else {
@@ -47,10 +52,14 @@ module.exports = {
             const quoteObj = item.filter((i) => {
                 return i.id == itemId;
             });
-
-            message.channel.send(quoteObj[0].body + ' - ' + `<@!${quoteObj[0].user_tagged}>` + ', ' + quoteObj[0].creation_year);
+                
+            message.channel.send('Gathering wisdom ').then(async (msg) =>{
+                msg.edit('Gathering wisdom 🐱🍺');
+                msg.edit('Gathering wisdom 🐱🍺🍺');
+                msg.edit('Gathering wisdom 🐱🍺🍺🍺');
+                msg.edit(quoteObj[0].body + ' - ' + `<@!${quoteObj[0].user_tagged}>` + ', ' + quoteObj[0].creation_year);
+            });    
         }
-
     },
 };
 

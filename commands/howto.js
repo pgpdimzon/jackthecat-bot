@@ -14,6 +14,7 @@ module.exports = {
             POLL: 'poll [question]\npoll [number of choices] [choice 1/choice 2/choice ...]',
             HELP: 'help',
             HOWTO: 'howto [command]',
+            PING: 'ping'
         };
 
         let commandAsked = null;
@@ -40,6 +41,9 @@ module.exports = {
                 break;
             case 'help':
                 commandAsked = Commands.HELP;
+                break;
+            case 'ping':
+                commandAsked = Commands.PING;
                 break;
             case 'howto':
                 commandAsked = Commands.HOWTO;
